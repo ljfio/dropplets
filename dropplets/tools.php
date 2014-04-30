@@ -94,6 +94,15 @@ if (!isset($_SESSION['user'])) { ?>
                         <input type="password" name="password" id="password" value="">
                     </div>
                 </div>
+                
+                <div class="dp-row dp-editable">
+                    <div class="dp-icon dp-icon-edit"></div>
+                    
+                    <div class="dp-content">
+                        <label>Show Market</label>
+                        <input type="text" name="show_market" id="show_market" value="<?php echo SHOW_MARKET; ?>">
+                    </div>
+                </div>
             </div>
             
             <div class="dp-row">
@@ -217,6 +226,7 @@ if (!isset($_SESSION['user'])) { ?>
             </div>
         </div>
         
+        <?php if (SHOW_MARKET) : ?>
         <div class="dp-row">
             <div class="dp-icon dp-icon-templates"></div>
             <div class="dp-content">Featured Templates</div>
@@ -255,6 +265,7 @@ if (!isset($_SESSION['user'])) { ?>
                 <?php get_premium_templates('all'); ?>
             </div>
         </div>
+        <?php endif; ?>
         
         <div class="dp-row">
             <div class="dp-icon dp-icon-large dp-icon-question"></div>
