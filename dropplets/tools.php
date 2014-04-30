@@ -100,7 +100,12 @@ if (!isset($_SESSION['user'])) { ?>
                     
                     <div class="dp-content">
                         <label>Show Market</label>
-                        <input type="text" name="show_market" id="show_market" value="<?php echo SHOW_MARKET; ?>">
+                        <input hidden type="text" name="show_market" id="show_market" value="<?php echo SHOW_MARKET; ?>" />
+                        <?php if( SHOW_MARKET ) : ?>
+                        <button class="dp-button dp-button-toggle dp-" type="button">k</button>
+                        <?php else : ?>                        
+                        <button class="dp-button dp-button-toggle dp-button-dark dp-icon-close" type="button"></button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -316,6 +321,23 @@ if (!isset($_SESSION['user'])) { ?>
             var myelement = $(this).attr("href")
             $(myelement).toggle();
             $(this).next('button.dp-button-submit').toggle();
+            return false;
+        });
+        
+        // For button toggles
+        $('.dp-button-toggle').click(function(){
+            var myelement = $(this).prev('input');
+            var current = $(myelement).val();
+            $(myelement).val(current == 0 ? 1 : 0);
+            
+            if(current == 0) {
+              $(this).html('k');
+              $(this).removeClass('dp-button-dark dp-icon-close');
+            } else {
+              $(this).html('');
+              $(this).addClass('dp-button-dark dp-icon-close');
+            }
+            
             return false;
         });
         
